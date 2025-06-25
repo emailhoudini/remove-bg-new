@@ -13,7 +13,40 @@ export const metadata: Metadata = {
   generator: 'v0.dev',
   icons: {
     icon: '/favicon.png?v=12345'
-  }
+  },
+  metadataBase: new URL('https://www.wipebg.ai'),
+  openGraph: {
+    title: 'Wipe BG - AI-Powered Background Removal Tool',
+    description: 'Remove backgrounds from images instantly with our AI-powered tool. Professional results in seconds.',
+    url: 'https://www.wipebg.ai',
+    siteName: 'Wipe BG',
+    images: [
+      {
+        url: '/images/hero-before-after.png',
+        width: 1200,
+        height: 630,
+        alt: 'Wipe BG - Before and After Example',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Wipe BG - AI-Powered Background Removal',
+    description: 'Remove image backgrounds in seconds with AI precision',
+    images: ['/images/hero-before-after.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    }
+  },
 }
 
 export default function RootLayout({
@@ -26,6 +59,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.png?v=12345" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#4169E1" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>

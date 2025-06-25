@@ -1,7 +1,17 @@
 import { type NextRequest, NextResponse } from "next/server"
 
+// Helper function to log errors in a standardized format
+const logError = (errorSource: string, error: any) => {
+  console.error(`[REMOVE-BG-API] [${errorSource}] Error:`, error);
+  return;
+}
+
 export async function POST(request: NextRequest) {
   try {
+    // Get client IP for potential rate limiting
+    const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+    console.log(`[REMOVE-BG-API] Request from IP: ${clientIp}`);
+
     const formData = await request.formData()
     const image = formData.get("image") as File
 
@@ -21,7 +31,7 @@ export async function POST(request: NextRequest) {
 
     // Require API key - no demo mode
     if (!process.env.REMOVE_BG_API_KEY) {
-      console.error("REMOVE_BG_API_KEY environment variable is not set")
+      logError('Configuration', 'REMOVE_BG_API_KEY environment variable is not set');
       return NextResponse.json(
         {
           error: "Background removal service is not configured. Please contact support.",
@@ -40,6 +50,9 @@ export async function POST(request: NextRequest) {
     const timeoutId = setTimeout(() => controller.abort(), 30000) // 30 second timeout
 
     try {
+      const startTime = Date.now();
+      console.log(`[REMOVE-BG-API] Processing image: ${image.name}, size: ${(image.size / 1024).toFixed(2)}KB`);
+      
       const response = await fetch("https://api.remove.bg/v1.0/removebg", {
         method: "POST",
         headers: {
@@ -50,10 +63,13 @@ export async function POST(request: NextRequest) {
       })
 
       clearTimeout(timeoutId)
+      
+      const processingTime = Date.now() - startTime;
+      console.log(`[REMOVE-BG-API] Processing completed in ${processingTime}ms`);
 
       if (!response.ok) {
         const errorText = await response.text()
-        console.error("Remove.bg API error:", response.status, errorText)
+        logError('API Response', `Status: ${response.status}, Body: ${errorText}`);
 
         // Parse the error response for better user feedback
         let errorMessage = "Failed to process image"
@@ -83,7 +99,7 @@ export async function POST(request: NextRequest) {
           }
         } catch (e) {
           // Use default error message if parsing fails
-          console.error("Failed to parse error response:", e)
+          logError('Error Parsing', e);
         }
 
         return NextResponse.json({ error: errorMessage }, { status: response.status })
@@ -91,17 +107,22 @@ export async function POST(request: NextRequest) {
 
       const processedImageBuffer = await response.arrayBuffer()
 
+      // Add cache headers for better performance
+      const cacheControlValue = 'public, max-age=31536000'; // 1 year
+      
       return new NextResponse(processedImageBuffer, {
         headers: {
           "Content-Type": "image/png",
           "Content-Disposition": 'attachment; filename="removed-background.png"',
-          "Cache-Control": "no-cache, no-store, must-revalidate",
+          "Cache-Control": cacheControlValue,
+          "ETag": `W/"${Date.now()}"`, // Add an ETag for caching
         },
       })
     } catch (fetchError) {
       clearTimeout(timeoutId)
 
       if (fetchError instanceof Error && fetchError.name === "AbortError") {
+        logError('Timeout', 'Request timed out after 30 seconds');
         return NextResponse.json(
           {
             error: "Request timeout. Please try with a smaller image or try again later.",
@@ -110,11 +131,11 @@ export async function POST(request: NextRequest) {
         )
       }
 
-      console.error("Fetch error:", fetchError)
+      logError('Fetch', fetchError);
       throw fetchError
     }
   } catch (error) {
-    console.error("Error processing image:", error)
+    logError('General', error);
 
     // Return user-friendly error message
     return NextResponse.json(
