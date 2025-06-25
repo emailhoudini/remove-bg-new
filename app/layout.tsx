@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords: "background removal, AI, image editing, photo editing, remove background, transparent background",
   generator: 'v0.dev',
   icons: {
-    icon: '/favicon.png?v=12345'
+    icon: '/favicon.png?v=robot2025'
   },
   metadataBase: new URL('https://www.wipebg.ai'),
   openGraph: {
@@ -57,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png?v=12345" />
+        <link rel="icon" href="/favicon.png?v=robot2025" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#4169E1" />
       </head>
