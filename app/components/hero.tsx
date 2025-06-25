@@ -44,9 +44,6 @@ export default function Hero() {
                   alt="Before and after example - woman in purple hoodie with background removed"
                   className="w-full max-w-md mx-auto lg:mx-0 rounded-2xl shadow-lg"
                 />
-                <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                </div>
               </div>
               <p className="text-sm text-gray-500 mt-3 text-center lg:text-left">
                 ✨ See the difference - instant background removal

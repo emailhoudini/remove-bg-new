@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <img src="/images/wipebg-logo.png" alt="Wipe BG Logo" className="h-8 w-auto" />
+            <img src="/images/wipebg-logo.png" alt="Wipe BG Logo" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -50,7 +50,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-4 mt-6">
                 <Link href="/" className="flex items-center space-x-2 mb-6">
-                  <img src="/images/wipebg-logo.png" alt="Wipe BG Logo" className="h-8 w-auto" />
+                  <img src="/images/wipebg-logo.png" alt="Wipe BG Logo" className="h-12 w-auto" />
                 </Link>
 
                 {navigation.map((item) => (
