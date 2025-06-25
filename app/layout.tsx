@@ -12,21 +12,10 @@ export const metadata: Metadata = {
   keywords: "background removal, AI, image editing, photo editing, remove background, transparent background",
   generator: 'v0.dev',
   icons: {
-    icon: [
-      { url: '/favicon/favicon.ico', sizes: 'any' },
-      { url: '/favicon/icon.svg', type: 'image/svg+xml' },
-    ],
-    apple: [
-      { url: '/favicon/apple-touch-icon.png' }
-    ],
-    other: [
-      {
-        rel: 'mask-icon',
-        url: '/favicon/safari-pinned-tab.svg',
-      }
-    ]
-  },
-  manifest: '/favicon/site.webmanifest'
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  }
 }
 
 export default function RootLayout({
@@ -37,8 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.png" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
