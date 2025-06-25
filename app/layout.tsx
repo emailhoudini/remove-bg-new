@@ -12,9 +12,10 @@ export const metadata: Metadata = {
   keywords: "background removal, AI, image editing, photo editing, remove background, transparent background",
   generator: 'v0.dev',
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: [
+      { url: '/favicon.png?v=1', sizes: 'any' }
+    ],
+    shortcut: '/favicon.png?v=1'
   }
 }
 
@@ -26,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.png?v=1" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.png?v=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
