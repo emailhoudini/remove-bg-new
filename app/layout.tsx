@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords: "background removal, AI, image editing, photo editing, remove background, transparent background",
   generator: 'v0.dev',
   icons: {
-    icon: '/favicon.png'
+    icon: '/favicon.png?v=12345'
   }
 }
 
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.png?v=12345" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={inter.className}>{children}</body>
