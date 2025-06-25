@@ -27,8 +27,8 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="col-span-1 md:col-span-1">
-              <Link href="/" className="flex items-center space-x-2">
-                <img src="/images/wipebg-logo.png" alt="Wipe BG Logo" className="h-8 w-auto" />
+              <Link href="/" className="flex items-center">
+                <span className="text-xl font-bold text-black">wipebg</span>
               </Link>
               <p className="mt-4 text-sm text-gray-600 max-w-xs">
                 Professional AI-powered background removal tool. Remove backgrounds from images instantly with
