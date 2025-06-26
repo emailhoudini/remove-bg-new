@@ -30,8 +30,11 @@ export default function Footer() {
                 <Image 
                   src="/images/wipebg-logo.png" 
                   alt="Wipe BG Logo" 
-                  width={40} 
-                  height={40} 
+                  width={120} 
+                  height={120}
+                  className="h-12 w-auto" 
+                  style={{ objectFit: 'contain' }}
+                  priority
                 />
               </Link>
               <p className="mt-4 text-sm text-gray-600 max-w-xs">

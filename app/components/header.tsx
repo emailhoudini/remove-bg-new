@@ -27,9 +27,11 @@ export default function Header() {
             <Image 
               src="/images/wipebg-logo.png" 
               alt="Wipe BG Logo" 
-              width={40} 
-              height={40} 
-              className="mr-2"
+              width={120}
+              height={120}
+              className="h-12 w-auto"
+              style={{ objectFit: 'contain' }}
+              priority
             />
           </Link>
 
@@ -60,8 +62,11 @@ export default function Header() {
                   <Image 
                     src="/images/wipebg-logo.png" 
                     alt="Wipe BG Logo" 
-                    width={40} 
-                    height={40} 
+                    width={120}
+                    height={120}
+                    className="h-12 w-auto"
+                    style={{ objectFit: 'contain' }}
+                    priority
                   />
                 </Link>
 
