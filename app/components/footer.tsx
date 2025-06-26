@@ -30,11 +30,9 @@ export default function Footer() {
                 <Image 
                   src="/images/wipebg-logo.png" 
                   alt="Wipe BG Logo" 
-                  width={28} 
-                  height={28} 
-                  className="mr-2"
+                  width={40} 
+                  height={40} 
                 />
-                <span className="text-xl font-bold text-black">wipebg</span>
               </Link>
               <p className="mt-4 text-sm text-gray-600 max-w-xs">
                 Professional AI-powered background removal tool. Remove backgrounds from images instantly with

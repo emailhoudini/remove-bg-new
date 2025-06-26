@@ -27,11 +27,10 @@ export default function Header() {
             <Image 
               src="/images/wipebg-logo.png" 
               alt="Wipe BG Logo" 
-              width={28} 
-              height={28} 
+              width={40} 
+              height={40} 
               className="mr-2"
             />
-            <span className="text-2xl font-bold text-black">wipebg</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -61,11 +60,9 @@ export default function Header() {
                   <Image 
                     src="/images/wipebg-logo.png" 
                     alt="Wipe BG Logo" 
-                    width={28} 
-                    height={28} 
-                    className="mr-2"
+                    width={40} 
+                    height={40} 
                   />
-                  <span className="text-2xl font-bold text-black">wipebg</span>
                 </Link>
 
                 {navigation.map((item) => (
