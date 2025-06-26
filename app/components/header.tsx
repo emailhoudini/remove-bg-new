@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image" 
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -10,7 +11,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Features", href: "/features" },
-  { name: "Blog", href: "/blog" },
+  { name: "Blog", href: "https://blog.wipebg.ai" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -23,6 +24,13 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
+            <Image 
+              src="/images/wipebg-logo.png" 
+              alt="Wipe BG Logo" 
+              width={28} 
+              height={28} 
+              className="mr-2"
+            />
             <span className="text-2xl font-bold text-black">wipebg</span>
           </Link>
 
@@ -50,6 +58,13 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-4 mt-6">
                 <Link href="/" className="flex items-center mb-6">
+                  <Image 
+                    src="/images/wipebg-logo.png" 
+                    alt="Wipe BG Logo" 
+                    width={28} 
+                    height={28} 
+                    className="mr-2"
+                  />
                   <span className="text-2xl font-bold text-black">wipebg</span>
                 </Link>
 

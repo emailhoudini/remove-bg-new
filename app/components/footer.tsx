@@ -1,17 +1,20 @@
 import Link from "next/link"
+import Image from "next/image"
 
 const footerLinks = {
+  brand: [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Features", href: "/features" },
+  ],
+  help: [
+    { name: "Support", href: "/support" },
+    { name: "Contact", href: "/contact" },
+  ],
   legal: [
     { name: "Terms of Service", href: "/terms" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Cookie Policy", href: "/cookies" },
-  ],
-  company: [
-    { name: "Features", href: "/features" },
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
-    { name: "Support", href: "/support" },
   ],
 }
 
@@ -20,10 +23,17 @@ export default function Footer() {
     <footer className="bg-white border-t border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="col-span-1">
               <Link href="/" className="flex items-center">
+                <Image 
+                  src="/images/wipebg-logo.png" 
+                  alt="Wipe BG Logo" 
+                  width={28} 
+                  height={28} 
+                  className="mr-2"
+                />
                 <span className="text-xl font-bold text-black">wipebg</span>
               </Link>
               <p className="mt-4 text-sm text-gray-600 max-w-xs">
@@ -36,7 +46,31 @@ export default function Footer() {
             <div>
               <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">Company</h3>
               <ul className="mt-4 space-y-3">
-                {footerLinks.company.map((link) => (
+                {footerLinks.brand.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <a 
+                    href="https://blog.wipebg.ai" 
+                    className="text-sm text-gray-600 hover:text-blue-600 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Blog
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Help Links */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">Need help?</h3>
+              <ul className="mt-4 space-y-3">
+                {footerLinks.help.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                       {link.name}
