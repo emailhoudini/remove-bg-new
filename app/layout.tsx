@@ -13,8 +13,10 @@ export const metadata: Metadata = {
   generator: 'v0.dev',
   icons: {
     icon: [
-      { url: '/favicon.png?v=robot2025', sizes: 'any' },
-      { url: '/images/favicon.png?v=robot2025', sizes: 'any' }
+      { url: '/images/wipebg-logo.png?v=robot2025', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/images/wipebg-logo.png?v=robot2025', sizes: 'any' }
     ]
   },
   metadataBase: new URL('https://www.wipebg.ai'),
@@ -60,11 +62,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png?v=robot2025" />
-        <link rel="shortcut icon" href="/favicon.png?v=robot2025" />
-        <link rel="icon" href="/images/favicon.png?v=robot2025" />
-        <link rel="shortcut icon" href="/images/favicon.png?v=robot2025" />
-        <link rel="apple-touch-icon" href="/favicon.png?v=robot2025" />
+        <link rel="icon" href="/images/wipebg-logo.png?v=robot2025" />
+        <link rel="shortcut icon" href="/images/wipebg-logo.png?v=robot2025" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#4169E1" />
       </head>
