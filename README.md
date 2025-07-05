@@ -1,93 +1,219 @@
 # Wipe BG - AI-Powered Background Removal
 
-A modern, responsive web application for removing backgrounds from images using AI.
+A modern, responsive web application for removing backgrounds from images using AI technology. Built with Next.js and powered by Remove.bg API.
 
-## Features
+## 🌟 Features
 
-- 🤖 AI-powered background removal
-- 🚀 Fast processing (< 5 seconds)
-- 📱 Mobile-friendly responsive design
-- 🔒 Privacy-first (images auto-deleted)
-- 💾 High-quality PNG output
-- 🎨 Clean, modern UI
+- 🤖 **AI-powered background removal** - Advanced machine learning algorithms
+- 🚀 **Lightning fast processing** - Results in under 5 seconds
+- 📱 **Mobile-first design** - Fully responsive across all devices
+- 🔒 **Privacy-first approach** - Images automatically deleted after processing
+- 💾 **High-quality output** - PNG format with transparency support
+- 🎨 **Modern UI/UX** - Clean, intuitive interface
+- 🌐 **Cross-browser compatibility** - Works on all modern browsers
+- 📊 **Usage analytics** - Track processing metrics (optional)
 
-## Setup Instructions
+## 🚀 Quick Start
 
-### 1. Environment Variables
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn package manager
+- Remove.bg API key (for production use)
 
-To enable real background removal, you need to set up the Remove.bg API key:
+### Installation
 
-1. Sign up at [Remove.bg](https://www.remove.bg/api) to get your API key
-2. Create a `.env.local` file in your project root:
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/wipebg.ai.git
+cd wipebg.ai
 
-\`\`\`bash
-REMOVE_BG_API_KEY=your_api_key_here
-\`\`\`
-
-### 2. Demo Mode
-
-If no API key is provided, the application will run in demo mode, showing a placeholder result instead of actual background removal.
-
-### 3. Deployment
-
-When deploying to platforms like Vercel, Netlify, or other providers:
-
-1. Add the `REMOVE_BG_API_KEY` environment variable in your deployment platform's settings
-2. The application will automatically detect the API key and switch from demo mode to live mode
-
-#### Vercel Deployment
-
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. In Vercel dashboard, go to your project settings
-4. Navigate to "Environment Variables"
-5. Add `REMOVE_BG_API_KEY` with your API key value
-6. Redeploy your application
-
-#### Netlify Deployment
-
-1. In Netlify dashboard, go to your site settings
-2. Navigate to "Environment variables"
-3. Add `REMOVE_BG_API_KEY` with your API key value
-4. Redeploy your application
-
-## Development
-
-\`\`\`bash
 # Install dependencies
 npm install
 
-# Run development server
+# Create environment file
+cp .env.example .env.local
+
+# Start development server
 npm run dev
+```
+
+Visit `http://localhost:3000` to see the application running.
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+Create a `.env.local` file in your project root:
+
+```bash
+# Required for production
+REMOVE_BG_API_KEY=your_api_key_here
+
+# Optional configurations
+NEXT_PUBLIC_APP_URL=https://wipebg.ai
+NEXT_PUBLIC_GA_ID=your_google_analytics_id
+MAX_FILE_SIZE=10485760  # 10MB in bytes
+ALLOWED_FILE_TYPES=image/jpeg,image/png,image/webp
+```
+
+### API Key Setup
+
+1. **Sign up** at [Remove.bg](https://www.remove.bg/api)
+2. **Get your API key** from the dashboard
+3. **Add to environment variables** as shown above
+4. **Verify setup** by testing the application
+
+## 🛠️ Development
+
+```bash
+# Development server
+npm run dev
+
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
 
 # Build for production
 npm run build
-\`\`\`
 
-## API Usage Limits
+# Start production server
+npm start
 
-Remove.bg has different pricing tiers:
-- Free: 50 images/month
-- Paid plans: Higher limits available
+# Run tests
+npm test
+```
 
-Monitor your usage in the Remove.bg dashboard to avoid service interruptions.
+## 📦 Deployment
 
-## Troubleshooting
+### Vercel (Recommended)
 
-### "Service temporarily unavailable" Error
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/wipebg.ai)
 
-This usually means:
-1. API key is not set or invalid
-2. API quota exceeded or main provider site is down
-3. Network connectivity issues
+1. **Connect repository** to Vercel
+2. **Add environment variables** in project settings
+3. **Deploy** - automatic deployments on git push
 
-### Hydration Mismatch Warnings
+### Netlify
 
-These are handled automatically by the application and shouldn't affect functionality.
+1. **Connect repository** to Netlify
+2. **Build settings**: 
+   - Build command: `npm run build`
+   - Publish directory: `.next`
+3. **Add environment variables** in site settings
+4. **Deploy**
 
-## Support
+### Docker
 
-For issues or questions:
-- Email: support@wipebg.ai
-- Check the console for detailed error messages
-- Verify your API key is correctly set
+```bash
+# Build image
+docker build -t wipebg .
+
+# Run container
+docker run -p 3000:3000 --env-file .env.local wipebg
+```
+
+## 🔧 API Integration
+
+### Remove.bg API Limits
+
+| Plan | Images/Month | Cost |
+|------|-------------|------|
+| Free | 50 | $0 |
+| Subscription | 1,000+ | $9.99+ |
+
+### Custom API Integration
+
+To integrate with other background removal services:
+
+1. **Modify API endpoint** in `/pages/api/remove-bg.js`
+2. **Update request format** according to new service
+3. **Handle response structure** differences
+4. **Update environment variables** accordingly
+
+## 📊 Performance
+
+- **Average processing time**: < 5 seconds
+- **Supported file formats**: JPEG, PNG, WebP
+- **Maximum file size**: 10MB
+- **Concurrent requests**: Limited by API provider
+
+## 🔍 Troubleshooting
+
+### Common Issues
+
+#### "Service temporarily unavailable"
+- ✅ Check API key validity
+- ✅ Verify API quota remaining
+- ✅ Test network connectivity
+- ✅ Check Remove.bg service status
+
+#### "File too large" Error
+- ✅ Ensure file is under 10MB
+- ✅ Compress image before upload
+- ✅ Check `MAX_FILE_SIZE` environment variable
+
+#### Hydration Mismatch Warnings
+- ✅ These are handled automatically
+- ✅ No action required - doesn't affect functionality
+
+### Debug Mode
+
+Enable debug logging:
+
+```bash
+# Add to .env.local
+DEBUG=true
+NODE_ENV=development
+```
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# E2E tests
+npm run test:e2e
+```
+
+## 🤝 Contributing
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+### Development Guidelines
+
+- Follow ESLint configuration
+- Write tests for new features
+- Update documentation
+- Use conventional commit messages
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Remove.bg** - AI background removal API
+- **Next.js** - React framework
+- **Vercel** - Deployment platform
+- **Tailwind CSS** - Styling framework
+
+## 📞 Support
+
+- **Website**: [wipebg.ai](https://wipebg.ai)
+- **Email**: support@wipebg.ai
+- **Issues**: [GitHub Issues](https://github.com/yourusername/wipebg.ai/issues)
+- **Documentation**: [Wiki](https://github.com/yourusername/wipebg.ai/wiki)
+
+---
+
+**Made with ❤️ by Hamza SVANS**
