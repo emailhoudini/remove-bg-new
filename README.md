@@ -30,7 +30,7 @@ If no API key is provided, the application will run in demo mode, showing a plac
 
 ### 3. Deployment
 
-When deploying to platforms like Vercel, Netlify, or others:
+When deploying to platforms like Vercel, Netlify, or other providers:
 
 1. Add the `REMOVE_BG_API_KEY` environment variable in your deployment platform's settings
 2. The application will automatically detect the API key and switch from demo mode to live mode
