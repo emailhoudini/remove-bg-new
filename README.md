@@ -78,7 +78,7 @@ Monitor your usage in the Remove.bg dashboard to avoid service interruptions.
 
 This usually means:
 1. API key is not set or invalid
-2. API quota exceeded
+2. API quota exceeded or main provider site is down
 3. Network connectivity issues
 
 ### Hydration Mismatch Warnings
