@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/*', '/admin/*', '/_next/*'],
+      disallow: ['/api/*', '/admin/*', '/_next/*', '/private/*'],
     },
     sitemap: 'https://wipebg.ai/sitemap.xml',
   }
-} 
+}
